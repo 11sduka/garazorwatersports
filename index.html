@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Garazor Water Sports | Alanya</title>
-    <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -62,6 +61,7 @@
             height: 100%;
             object-fit: cover;
             z-index: -2;
+            background: #1a1a1a;
         }
         .hero-overlay {
             position: absolute;
@@ -69,7 +69,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(18, 18, 18, 0.55); 
+            background: rgba(18, 18, 18, 0.6); 
             z-index: -1;
         }
         .hero h1 {
@@ -84,7 +84,6 @@
             font-size: 1.2rem;
             margin-bottom: 35px;
             max-width: 600px;
-            font-weight: 400;
             color: #e0e0e0;
             text-shadow: 0 2px 8px rgba(0,0,0,0.7);
         }
@@ -95,11 +94,9 @@
             font-weight: 700;
             color: #121212;
             background: #00f2fe;
-            border: none;
-            border-radius: 30px;
             text-decoration: none;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            border-radius: 30px;
             box-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
             transition: all 0.4s ease;
         }
@@ -110,7 +107,6 @@
             color: #382f25; 
             padding: 100px 5%;
             text-align: center;
-            width: 100%;
         }
         .section-title {
             font-size: 2.5rem;
@@ -119,7 +115,6 @@
             text-transform: uppercase;
             position: relative;
             display: inline-block;
-            letter-spacing: 1px;
         }
         .section-title::after {
             content: '';
@@ -130,20 +125,16 @@
             bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
-            border-radius: 2px;
         }
-        
-        /* GRID YAPISI */
         .cards-grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             max-width: 1200px;
             margin: 0 auto;
-            width: 100%;
         }
         
-        /* KART TASARIMI */
+        /* GÖRSEL BOYUT ADAPTASYONU */
         .activity-card {
             background: #ffffff;
             border-radius: 20px;
@@ -151,18 +142,12 @@
             box-shadow: 0 10px 20px rgba(56, 47, 37, 0.15);
             display: flex;
             flex-direction: column;
-            width: 100%;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .activity-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 242, 254, 0.2);
+            height: 100%;
         }
         .card-img {
             width: 100%;
-            height: 220px;
-            object-fit: cover;
-            display: block;
+            height: 240px; /* Tüm resim boyutları burada eşitlendi */
+            object-fit: cover; /* Resimleri esnetmeden kutuya tam uydurur */
             background-color: #eaeaea;
         }
         .card-content {
@@ -184,7 +169,6 @@
             color: #5c5346;
             line-height: 1.5;
             margin-bottom: 20px;
-            min-height: 68px;
         }
         .btn-card {
             display: block;
@@ -197,12 +181,6 @@
             border-radius: 10px;
             text-transform: uppercase;
             font-size: 0.8rem;
-            letter-spacing: 0.5px;
-            transition: background 0.2s;
-        }
-        .activity-card:hover .btn-card {
-            background: #00f2fe;
-            color: #121212;
         }
 
         /* --- FOOTER --- */
@@ -227,12 +205,12 @@
         .footer-info p {
             margin-bottom: 10px;
             color: #cccccc;
-            line-height: 1.5;
         }
         .map-box {
             border-radius: 15px;
             overflow: hidden;
-            height: 220px;
+            height: 250px;
+            background: #222;
         }
         .copyright {
             text-align: center;
@@ -246,141 +224,145 @@
 </head>
 <body>
 
-    <!-- HEADER -->
     <header>
         <div class="logo">Garazorwatersports</div>
     </header>
 
-    <!-- HERO SECTION -->
     <section class="hero">
         <video class="hero-video" autoplay loop muted playsinline>
-            <source src="video_2026-06-23_13-33-59.mp4" type="video/mp4">
+            <source src="video.mp4" type="video/mp4">
         </video>
         <div class="hero-overlay"></div>
         <h1>Garazor Su Sporları</h1>
         <p>Alanya Eftalia bölgesinin sıcak güneşi ve turkuaz sularında, lüks ve heyecan dolu unutulmaz bir macera deneyimi.</p>
-        <a href="https://wa.me/905366816899?text=Merhaba,%20rezervasyon%20yaptırmak%20istiyorum." target="_blank" class="btn-glow">Şimdi Rezervasyon Yap</a>
+        <a href="https://wa.me/905366816899" target="_blank" class="btn-glow">Şimdi Rezervasyon Yap</a>
     </section>
 
-    <!-- AKTİVİTELER BÖLÜMÜ -->
     <section class="activities-section">
         <h2 class="section-title">Aktivitelerimiz</h2>
         <div class="cards-grid-container">
             
-            <!-- Parasailing -->
             <div class="activity-card">
-                <img src="1000142404.jpg" class="card-img" alt="Parasailing">
+                <img src="parasailing.jpg" class="card-img">
                 <div class="card-content">
                     <h3>Parasailing</h3>
                     <p>Alanya semalarında gökyüzünün tadını çıkarın. Muazzam sahil manzaralı uçuş keyfi.</p>
-                    <a href="https://wa.me/905366816899?text=Merhaba,%20Parasailing%20için%20rezervasyon%20yaptırmak%20istiyorum." target="_blank" class="btn-card">Rezervasyon Yap</a>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card">Rezervasyon Yap</a>
                 </div>
             </div>
 
-            <!-- McLaren Jet Car -->
             <div class="activity-card">
-                <img src="1000142407.jpg" class="card-img" alt="Mclaren Jet Car">
+                <img src="mclarenjetcar.jpg" class="card-img">
                 <div class="card-content">
                     <h3>Mclaren Jet Car</h3>
                     <p>Deniz üzerinde lüks spor araba sürme deneyimi. Dikkat çekici tarzı ve hızıyla Alanya'da tek!</p>
-                    <a href="https://wa.me/905366816899?text=Merhaba,%20Mclaren%20Jet%20Car%20için%20rezervasyon%20yaptırmak%20istiyorum." target="_blank" class="btn-card">Rezervasyon Yap</a>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card">Rezervasyon Yap</a>
                 </div>
             </div>
 
-            <!-- Jet Ski -->
             <div class="activity-card">
-                <img src="1000142409.jpg" class="card-img" alt="Jet Ski">
+                <img src="jetski.jpg" class="card-img">
                 <div class="card-content">
                     <h3>Jet Ski</h3>
                     <p>Dalgalara karşı özgürce hız yapın. Güçlü motorlarla adrenalin dolu dakikalar.</p>
-                    <a href="https://wa.me/905366816899?text=Merhaba,%20Jet%20Ski%20için%20rezervasyon%20yaptırmak%20istiyorum." target="_blank" class="btn-card">Rezervasyon Yap</a>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card">Rezervasyon Yap</a>
                 </div>
             </div>
 
-            <!-- Matrax -->
             <div class="activity-card">
-                <img src="1000142411.jpg" class="card-img" alt="Matrax">
+                <img src="matrax.jpg" class="card-img">
                 <div class="card-content">
                     <h3>Matrax</h3>
                     <p>Arkadaş grubunuzla birlikte dalgaların üzerinde meydan okuyun, bol kahkaha garantili.</p>
-                    <a href="https://wa.me/905366816899?text=Merhaba,%20Matrax%20için%20rezervasyon%20yaptırmak%20istiyorum." target="_blank" class="btn-card">Rezervasyon Yap</a>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card">Rezervasyon Yap</a>
                 </div>
             </div>
 
-            <!-- Banana -->
             <div class="activity-card">
-                <img src="1000142412.jpg" class="card-img" alt="Banana">
+                <img src="banana.jpg" class="card-img">
                 <div class="card-content">
                     <h3>Banana</h3>
                     <p>Muz bot üzerinde dengede kalmaya çalışın, düşmek hiç bu kadar eğlenceli olmamıştı.</p>
-                    <a href="https://wa.me/905366816899?text=Merhaba,%20Banana%20için%20rezervasyon%20yaptırmak%20istiyorum." target="_blank" class="btn-card">Rezervasyon Yap</a>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card">Rezervasyon Yap</a>
                 </div>
             </div>
 
-            <!-- Rolls Royce -->
             <div class="activity-card">
-                <img src="rolls_royce.jpg" class="card-img" alt="Rolls Royce">
+                <img src="balerin.jpg" class="card-img">
                 <div class="card-content">
-                    <h3>Rolls Royce Jet Car</h3>
-                    <p>Premium lüks hissini suyun üzerinde yaşayın. Konforlu ve benzersiz bir deniz sürüşü.</p>
-                    <a href="https://wa.me/905366816899?text=Merhaba,%20Rolls%20Royce%20için%20rezervasyon%20yaptırmak%20istiyorum." target="_blank" class="btn-card">Rezervasyon Yap</a>
+                    <h3>Balerin</h3>
+                    <p>Deniz yüzeyinde dönerek ilerleyen, dengede kalma sınırlarınızı test edecek benzersiz bir macera.</p>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card">Rezervasyon Yap</a>
                 </div>
             </div>
 
-            <!-- Fly Fish -->
             <div class="activity-card">
-                <img src="banana.webp" class="card-img" alt="Fly Fish">
+                <img src="flyfish.webp" class="card-img">
                 <div class="card-content">
                     <h3>Fly Fish</h3>
                     <p>Rüzgarla birlikte suyun üzerinden havalanan, uçma hissi veren çılgın aktivite.</p>
-                    <a href="https://wa.me/905366816899?text=Merhaba,%20Fly%20Fish%20için%20rezervasyon%20yaptırmak%20istiyorum." target="_blank" class="btn-card">Rezervasyon Yap</a>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card">Rezervasyon Yap</a>
                 </div>
             </div>
 
-            <!-- Water Ski -->
             <div class="activity-card">
-                <img src="waterski.webp" class="card-img" alt="Water Ski">
+                <img src="frantic.jpg" class="card-img">
                 <div class="card-content">
-                    <h3>Water Ski</h3>
-                    <p>Su kayağı ile deniz üstünde dengede durmanın ve akrobatik sürüşün tadını çıkarın.</p>
-                    <a href="https://wa.me/905366816899?text=Merhaba,%20Water%20Ski%20için%20rezervasyon%20yaptırmak%20istiyorum." target="_blank" class="btn-card">Rezervasyon Yap</a>
+                    <h3>Frantic</h3>
+                    <p>Dalgaların üzerinde sınırları zorlayan, yüksek sürat ve adrenalin dolu çılgın eğlence.</p>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card">Rezervasyon Yap</a>
                 </div>
             </div>
 
-            <!-- Speed Boat Tour -->
             <div class="activity-card">
-                <img src="speed-kategori-gorsel.jpg" class="card-img" alt="Speed Boat Tour">
-                <div class="card-content">
-                    <h3>Speed Boat Tour</h3>
-                    <p>Alanya'nın gizli koylarını yüksek süratli lüks sürat teknemizle keşfedin.</p>
-                    <a href="https://wa.me/905366816899?text=Merhaba,%20Speed%20Boat%20Tour%20için%20rezervasyon%20yaptırmak%20istiyorum." target="_blank" class="btn-card">Rezervasyon Yap</a>
-                </div>
-            </div>
-
-            <!-- Ringo -->
-            <div class="activity-card">
-                <img src="Marmaris-Ringo-2.jpg" class="card-img" alt="Ringo">
+                <img src="ringo.jpg" class="card-img">
                 <div class="card-content">
                     <h3>Ringo</h3>
                     <p>Suyun hemen üzerinde hızla çekilirken heyecanın doruklarına çıkın.</p>
-                    <a href="https://wa.me/905366816899?text=Merhaba,%20Ringo%20için%20rezervasyon%20yaptırmak%20istiyorum." target="_blank" class="btn-card">Rezervasyon Yap</a>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card">Rezervasyon Yap</a>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="rolls_royce.jpg" class="card-img">
+                <div class="card-content">
+                    <h3>Rolls Royce Jet Car</h3>
+                    <p>Premium lüks hissini suyun üzerinde yaşayın. Konforlu ve benzersiz bir deniz sürüşü.</p>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card">Rezervasyon Yap</a>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="speed-kategori-gorsel.jpg" class="card-img">
+                <div class="card-content">
+                    <h3>Speed Boat Tour</h3>
+                    <p>Alanya'nın gizli koylarını yüksek süratli lüks sürat teknemizle keşfedin.</p>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card">Rezervasyon Yap</a>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <img src="waterski.webp" class="card-img">
+                <div class="card-content">
+                    <h3>Water Ski</h3>
+                    <p>Su kayağı ile deniz üstünde dengede durmanın ve akrobatik sürüşün tadını çıkarın.</p>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card">Rezervasyon Yap</a>
                 </div>
             </div>
 
         </div>
     </section>
 
-    <!-- FOOTER -->
     <footer>
         <div class="footer-container">
             <div class="footer-info">
                 <h2>Garazor Water Sports</h2>
                 <p>Eftalia Hotels bölgesinde profesyonel kadromuz ve lüks ekipmanlarımızla hizmetinizdeyiz.</p>
-                <p><i class="fa-solid fa-location-dot"></i> Türkler, Eftalia Ocean / Island / Aqua Sahili, Alanya/Antalya</p>
+                <p><i class="fa-solid fa-location-dot"></i> Türkler, Eftalia Sahili, Alanya/Antalya</p>
                 <p><i class="fa-solid fa-phone"></i> +90 536 681 68 99</p>
             </div>
             <div class="map-box">
-                <iframe src="https://maps.google.com/?cid=4405272981052547978" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://maps.google.com/maps?q=Eftalia%20Hotels,%20T%C3%BCrkler,%20Alanya&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
         <div class="copyright">© 2026 Garazorwatersports. Tüm Hakları Saklıdır.</div>

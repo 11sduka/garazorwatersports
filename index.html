@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garazor Watersports | Alanya</title>
+    
+    <!-- Hızlı Yükleme İçin Font Optimizasyonu -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+    
+    <style>
+        /* --- TEMEL SIFIRLAMA --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        body {
+            background-color: #ffffff;
+            color: #121212;
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER & BRANDING --- */
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            z-index: 9999;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.95), rgba(0,0,0,0));
+        }
+        
+        .brand-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            height: 220px;
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0px 4px 12px rgba(0,0,0,0.6));
+        }
+        
+        /* --- DİL MENÜSÜ --- */
+        .lang-dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .lang-dropbtn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .lang-dropbtn:hover {
+            background: #00f2fe;
+            color: #121212;
+            border-color: #00f2fe;
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
+        }
+
+        .lang-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: 100%;
+            margin-top: 5px;
+            background-color: rgba(20, 20, 20, 0.98);
+            min-width: 150px;
+            box-shadow: 0px 8px 16px rgba(0,0,0,0.5);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .lang-content.show {
+            display: block;
+        }
+
+        .lang-content button {
+            color: #fff;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            width: 100%;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .lang-content button:hover {
+            background-color: #00f2fe;
+            color: #121212;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            height: 100vh;
+            width: 100%;
+            overflow: hidden;
+            background: #1a1a1a;
+        }
+        .hero video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 1;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.15); 
+            z-index: 2;
+        }
+
+        .audio-control-btn {
+            position: absolute;
+            bottom: 30px;
+            right: 5%;
+            z-index: 10;
+            background: rgba(0, 242, 254, 0.8);
+            color: #121212;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(0, 242, 254, 0.5);
+            transition: all 0.3s ease;
+        }
+        .audio-control-btn:hover {
+            transform: scale(1.1);
+            background: #00f2fe;
+        }
+
+        /* --- REZERVASYON ALANI --- */
+        .booking-bar {
+            background-color: #ffffff;
+            padding: 50px 20px 20px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 3;
+        }
+        .btn-glow {
+            display: inline-block;
+            padding: 16px 60px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            background: #241e17;
+            text-decoration: none;
+            text-transform: uppercase;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s ease;
+        }
+        .btn-glow:hover {
+            background: #00f2fe;
+            color: #121212;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.6);
+        }
+
+        /* --- AKTİVİTELER BÖLÜMÜ --- */
+        .activities-section {
+            background-color: #ffffff;
+            color: #241e17; 
+            padding: 40px 5% 60px 5%;
+            text-align: center;
+        }
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 60px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            color: #121212;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 5px;
+            background: #00f2fe;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .cards-grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .activity-card {
+            background: #ffffff; 
+            border: 1px solid #e1e1e1;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .card-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            background-color: #eaeaea;
+        }
+        .card-content {
+            padding: 20px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-grow: 1;
+        }
+        .activity-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: #121212;
+        }
+        .activity-card p {
+            font-size: 0.9rem;
+            color: #444444;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .btn-card {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            background: #241e17;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 10px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+        .btn-card:hover {
+            background: #00f2fe;
+            color: #121212;
+        }
+
+        /* --- HAKKIMIZDA (ABOUT US) --- */
+        .about-section {
+            background-color: #fafafa;
+            padding-bottom: 90px;
+            border-top: 1px solid #eaeaea;
+        }
+        .about-hero-img-box {
+            width: 100%;
+            height: 500px; 
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+        .about-hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%; 
+        }
+        .about-content-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 5%;
+            text-align: left;
+        }
+        .about-subtitle {
+            color: #00f2fe;
+            text-transform: uppercase;
+            font-weight: 800;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        .about-title {
+            font-size: 2.3rem;
+            font-weight: 900;
+            color: #121212;
+            line-height: 1.3;
+            margin-bottom: 30px;
+        }
+        .about-text {
+            font-size: 0.95rem;
+            color: #444;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .about-highlight {
+            font-weight: 700;
+            color: #121212;
+            font-style: italic;
+            border-left: 4px solid #00f2fe;
+            padding-left: 20px;
+            margin: 35px 0;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+        .about-why-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #121212;
+            margin-top: 45px;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+        }
+        .about-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px 30px;
+        }
+        .about-list li {
+            font-size: 0.95rem;
+            color: #333;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .about-list li i {
+            color: #00f2fe;
+            font-size: 1.2rem;
+        }
+        .about-tagline {
+            margin-top: 50px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #888;
+            text-transform: uppercase;
+            border-top: 1px solid #eaeaea;
+            padding-top: 20px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #161616;
+            color: #ffffff;
+            padding: 60px 5% 30px 5%;
+            border-top: 1px solid #222;
+        }
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-info h2 {
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+            color: #00f2fe;
+        }
+        .footer-info p {
+            margin-bottom: 10px;
+            color: #cccccc;
+        }
+        .map-box {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 250px;
+            background: #222;
+        }
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #252525;
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        /* --- MOBIL UYUMLULUK --- */
+        @media screen and (max-width: 768px) {
+            header { padding: 10px 3%; }
+            .logo-img { height: 140px; } 
+            .booking-bar { padding: 35px 15px 15px 15px; }
+            .btn-glow { padding: 14px 30px; font-size: 0.9rem; width: 100%; }
+            .activities-section { padding: 20px 3% 40px 3%; }
+            .section-title { font-size: 1.8rem; margin-bottom: 40px; }
+            .cards-grid-container { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .card-img { height: 130px; }
+            .card-content { padding: 10px; }
+            .activity-card h3 { font-size: 0.9rem; margin-bottom: 6px; }
+            .activity-card p { font-size: 0.75rem; line-height: 1.3; margin-bottom: 12px; }
+            .btn-card { padding: 8px 5px; font-size: 0.7rem; border-radius: 6px; }
+            .audio-control-btn { bottom: 20px; right: 5%; width: 40px; height: 40px; font-size: 1rem; }
+            
+            .about-section { padding-bottom: 60px; }
+            .about-hero-img-box { height: 250px; margin-bottom: 35px; }
+            .about-title { font-size: 1.6rem; margin-bottom: 20px; }
+            .about-text { font-size: 0.85rem; line-height: 1.6; }
+            .about-highlight { margin: 25px 0; font-size: 0.95rem; }
+            .about-why-title { font-size: 1.1rem; margin-top: 30px; }
+            .about-list { grid-template-columns: 1fr; gap: 12px; }
+            .about-list li { font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand-container">
+            <img src="logo_2.png" alt="Garazor Watersports" class="logo-img" decoding="async">
+        </div>
+        
+        <div class="lang-dropdown">
+            <button class="lang-dropbtn" onclick="toggleDropdown(event)">
+                <span id="selected-lang-text">ENG</span> <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="lang-content" id="langMenu">
+                <button onclick="changeLanguage('en')">ENG</button>
+                <button onclick="changeLanguage('de')">DE</button>
+                <button onclick="changeLanguage('ru')">RU</button>
+                <button onclick="changeLanguage('tr')">TR</button>
+                <button onclick="changeLanguage('pl')">PL (Polonya)</button>
+                <button onclick="changeLanguage('cs')">CS (Çekya)</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <video autoplay muted loop playsinline preload="auto" id="bg-video">
+            <source src="video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <button class="audio-control-btn" onclick="toggleMute()" id="audio-icon">
+            <i class="fa-solid fa-volume-xmark"></i>
+        </button>
+    </section>
+
+    <div class="booking-bar">
+        <a href="https://wa.me/905366816899" target="_blank" class="btn-glow" id="main-book-btn">Book Now</a>
+    </div>
+
+    <!-- AKTİVİTELER -->
+    <section class="activities-section">
+        <h2 class="section-title" id="section-title-text">Our Activities</h2>
+        <div class="cards-grid-container">
+            
+            <!-- Parasailing -->
+            <div class="activity-card">
+                <img src="parasailing.jpg?v=2" class="card-img" loading="lazy" decoding="async">
+                <div class="card-content">
+                    <h3 id="title-parasailing">Parasailing</h3>
+                    <p id="desc-parasailing">Enjoy the sky above Alanya. A wonderful flight experience with amazing coastal views.</p>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card card-btn-lang">Book Now</a>
+                </div>
+            </div>
+
+            <!-- McLaren Jet Car -->
+            <div class="activity-card">
+                <img src="mclarenjetcar.jpg?v=2" class="card-img" loading="lazy" decoding="async">
+                <div class="card-content">
+                    <h3 id="title-mclaren">Mclaren Jet Car</h3>
+                    <p id="desc-mclaren">Luxury sports car driving experience on the sea. The only one in Alanya with its eye-catching style and speed!</p>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card card-btn-lang">Book Now</a>
+                </div>
+            </div>
+
+            <!-- Jet Ski -->
+            <div class="activity-card">
+                <img src="jetski.jpg?v=2" class="card-img" loading="lazy" decoding="async">
+                <div class="card-content">
+                    <h3 id="title-jetski">Jet Ski</h3>
+                    <p id="desc-jetski">Speed freely against the waves. Adrenaline-filled moments with powerful engines.</p>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card card-btn-lang">Book Now</a>
+                </div>
+            </div>
+
+            <!-- Matrax -->
+            <div class="activity-card">
+                <img src="matrax.jpg" class="card-img" loading="lazy" decoding="async">
+                <div class="card-content">
+                    <h3 id="title-matrax">Matrax</h3>
+                    <p id="desc-matrax">Challenge the waves together with your friend group, laughter guaranteed.</p>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card card-btn-lang">Book Now</a>
+                </div>
+            </div>
+
+            <!-- Banana -->
+            <div class="activity-card">
+                <img src="banana.jpg" class="card-img" loading="lazy" decoding="async">
+                <div class="card-content">
+                    <h3 id="title-banana">Banana</h3>
+                    <p id="desc-banana">Try to stay balanced on the banana boat, falling off has never been this fun.</p>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card card-btn-lang">Book Now</a>
+                </div>
+            </div>
+
+            <!-- Balerin -->
+            <div class="activity-card">
+                <img src="balerin.jpg" class="card-img" loading="lazy" decoding="async">
+                <div class="card-content">
+                    <h3 id="title-balerin">Balerin</h3>
+                    <p id="desc-balerin">A unique adventure that spins across the sea surface and tests your balance limits.</p>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card card-btn-lang">Book Now</a>
+                </div>
+            </div>
+
+            <!-- Fly Fish -->
+            <div class="activity-card">
+                <img src="flyfish.jpg" class="card-img" loading="lazy" decoding="async">
+                <div class="card-content">
+                    <h3 id="title-flyfish">Fly Fish</h3>
+                    <p id="desc-flyfish">A crazy activity that lifts off the water with the wind, giving you a flying sensation.</p>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card card-btn-lang">Book Now</a>
+                </div>
+            </div>
+
+            <!-- Frantic -->
+            <div class="activity-card">
+                <img src="frantic.jpg" class="card-img" loading="lazy" decoding="async">
+                <div class="card-content">
+                    <h3 id="title-frantic">Frantic</h3>
+                    <p id="desc-frantic">Crazy fun full of high speed and adrenaline, pushing the limits on the waves.</p>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card card-btn-lang">Book Now</a>
+                </div>
+            </div>
+
+            <!-- Ringo -->
+            <div class="activity-card">
+                <img src="ringo.jpg" class="card-img" loading="lazy" decoding="async">
+                <div class="card-content">
+                    <h3 id="title-ringo">Ringo</h3>
+                    <p id="desc-ringo">Reach the peaks of excitement while being pulled rapidly just above the water.</p>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card card-btn-lang">Book Now</a>
+                </div>
+            </div>
+
+            <!-- Rolls Royce -->
+            <div class="activity-card">
+                <img src="rolls_royce.jpg" class="card-img" loading="lazy" decoding="async">
+                <div class="card-content">
+                    <h3 id="title-rolls">Rolls Royce Jet Car</h3>
+                    <p id="desc-rolls">Experience the premium luxury feeling on the water. A comfortable and unique sea cruise.</p>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card card-btn-lang">Book Now</a>
+                </div>
+            </div>
+
+            <!-- Speed Boat Tour -->
+            <div class="activity-card">
+                <img src="speed-kategori-gorsel.jpg" class="card-img" loading="lazy" decoding="async">
+                <div class="card-content">
+                    <h3 id="title-speedboat">Speed Boat Tour</h3>
+                    <p id="desc-speedboat">Discover the hidden bays of Alanya with our high-speed luxury speedboat tour.</p>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card card-btn-lang">Book Now</a>
+                </div>
+            </div>
+
+            <!-- Water Ski -->
+            <div class="activity-card">
+                <img src="waterski.webp" class="card-img" loading="lazy" decoding="async">
+                <div class="card-content">
+                    <h3 id="title-waterski">Water Ski</h3>
+                    <p id="desc-waterski">Enjoy balancing on the water and acrobatic riding with water skiing.</p>
+                    <a href="https://wa.me/905366816899" target="_blank" class="btn-card card-btn-lang">Book Now</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- HAKKIMIZDA -->
+    <section class="about-section">
+        <div class="about-hero-img-box">
+            <img src="aboutus.jpg" alt="Garazor Watersports Station" class="about-hero-img" loading="lazy" decoding="async">
+        </div>
+        
+        <div class="about-content-container">
+            <span class="about-subtitle" id="about-sub">About Us</span>
+            <h2 class="about-title" id="about-title-text">Every Great Holiday Deserves an Unforgettable Adventure.</h2>
+            
+            <p class="about-text" id="about-p1">As Garazor Watersports, we offer our guests not only water sports but also memories they will cherish for years on the magnificent Mediterranean coast of Alanya.</p>
+            <p class="about-text" id="about-p2">Every guest is special to us. You might be riding a Jet Ski for the first time or parasailing over the sea. No matter your experience, our professional team welcomes you safely, informs you at every stage, and ensures you experience one of the most exciting moments of your holiday.</p>
+            <p class="about-text" id="about-p3">Safety is our priority, and guest satisfaction is our greatest motivation. Therefore, all our equipment is regularly checked, maintained in accordance with international safety standards, and all our activities are managed by our experienced team.</p>
+            <p class="about-text" id="about-p4">From Jet Ski to Parasailing, Banana Boat to Fly Fish and Ringo, every activity combines speed, fun, and the fascinating view of the Mediterranean. Whether you are traveling with your family, friends, or alone, there is an unforgettable experience for everyone at Garazor Watersports.</p>
+            <p class="about-text" id="about-p5">Over the years, we have hosted thousands of guests from all over the world. Our greatest pride is our guests who visit us again every season and recommend us to their friends.</p>
+            
+            <div class="about-highlight" id="about-quote">
+                Because we don't just offer water sports. We create the best memory of people's holidays.
+            </div>
+            
+            <p class="about-text" id="about-p6">We invite you to feel freedom in the turquoise waters of the Mediterranean, experience adrenaline-filled moments, and become a part of the Garazor Watersports family.</p>
+            
+            <h3 class="about-why-title" id="about-why-head">Why Garazor Watersports?</h3>
+            <ul class="about-list">
+                <li><i class="fa-solid fa-circle-check"></i> <span id="why-1">Professional and friendly team</span></li>
+                <li><i class="fa-solid fa-circle-check"></i> <span id="why-2">Safety-oriented service approach</span></li>
+                <li><i class="fa-solid fa-circle-check"></i> <span id="why-3">Regularly maintained quality equipment</span></li>
+                <li><i class="fa-solid fa-circle-check"></i> <span id="why-4">Activities for all ages and experience levels</span></li>
+                <li><i class="fa-solid fa-circle-check"></i> <span id="why-5">Fast booking and easy communication</span></li>
+                <li><i class="fa-solid fa-circle-check"></i> <span id="why-6">Unforgettable memories, real satisfaction</span></li>
+            </ul>
+            
+            <div class="about-tagline" id="about-tag">Garazor Watersports • Ride the Waves. Feel the Freedom. Create Memories.</div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <h2>Garazor Watersports</h2>
+                <p id="footer-desc">We are at your service in the Eftalia Hotels region with our professional staff and luxury equipment.</p>
+                <p><i class="fa-solid fa-location-dot"></i> Türkler, Eftalia Sahili, Alanya/Antalya</p>
+                <p><i class="fa-solid fa-phone"></i> +90 536 681 68 99</p>
+            </div>
+            <div class="map-box">
+                <iframe src="https://maps.google.com/maps?q=Eftalia%20Hotels,%20T%C3%BCrkler,%20Alanya&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+        <div class="copyright">© 2026 Garazorwatersports. <span id="footer-rights">All Rights Reserved.</span></div>
+    </footer>
+
+    <script>
+        function toggleDropdown(event) {
+            event.stopPropagation();
+            document.getElementById("langMenu").classList.toggle("show");
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.lang-dropbtn')) {
+                var dropdowns = document.getElementsByClassName("lang-content");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+
+        function toggleMute() {
+            const video = document.getElementById('bg-video');
+            const icon = document.getElementById('audio-icon');
+            
+            if (video.muted) {
+                video.muted = false;
+                icon.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+            } else {
+                video.muted = true;
+                icon.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+            }
+        }
+
+        const translations = {
+            en: {
+                mainBook: "Book Now", secTitle: "Our Activities", cardBook: "Book Now",
+                footerDesc: "We are at your service in the Eftalia Hotels region with our professional staff and luxury equipment.",
+                rights: "All Rights Reserved.",
+                parasailing: "Enjoy the sky above Alanya. A wonderful flight experience with amazing coastal views.",
+                mclaren: "Luxury sports car driving experience on the sea. The only one in Alanya with its eye-catching style and speed!",
+                jetski: "Speed freely against the waves. Adrenaline-filled moments with powerful engines.",
+                matrax: "Challenge the waves together with your friend group, laughter guaranteed.",
+                banana: "Try to stay balanced on the banana boat, falling off has never been this fun.",
+                balerin: "A unique adventure that spins across the sea surface and tests your balance limits.",
+                flyfish: "A crazy activity that lifts off the water with the wind, giving you a flying sensation.",
+                frantic: "Crazy fun full of high speed and adrenaline, pushing the limits on the waves.",
+                ringo: "Reach the peaks of excitement while being pulled rapidly just above the water.",
+                rolls: "Experience the premium luxury feeling on the water. A comfortable and unique sea cruise.",
+                speedboat: "Discover the hidden bays of Alanya with our high-speed luxury speedboat tour.",
+                waterski: "Enjoy balancing on the water and acrobatic riding with water skiing.",
+                abSub: "About Us", abTitle: "Every Great Holiday Deserves an Unforgettable Adventure.",
+                abP1: "As Garazor Watersports, we offer our guests not only water sports but also memories they will cherish for years on the magnificent Mediterranean coast of Alanya.",
+                abP2: "Every guest is special to us. You might be riding a Jet Ski for the first time or parasailing over the sea. No matter your experience, our professional team welcomes you safely, informs you at every stage, and ensures you experience one of the most exciting moments of your holiday.",
+                abP3: "Safety is our priority, and guest satisfaction is our greatest motivation. Therefore, all our equipment is regularly checked, maintained in accordance with international safety standards, and all our activities are managed by our experienced team.",
+                abP4: "From Jet Ski to Parasailing, Banana Boat to Fly Fish and Ringo, every activity combines speed, fun, and the fascinating view of the Mediterranean. Whether you are traveling with your family, friends, or alone, there is an unforgettable experience for everyone at Garazor Watersports.",
+                abP5: "Over the years, we have hosted thousands of guests from all over the world. Our greatest pride is our guests who visit us again every season and recommend us to their friends.",
+                abQuote: "Because we don't just offer water sports. We create the best memory of people's holidays.",
+                abP6: "We invite you to feel freedom in the turquoise waters of the Mediterranean, experience adrenaline-filled moments, and become a part of the Garazor Watersports family.",
+                abWhyHead: "Why Garazor Watersports?", w1: "Professional and friendly team", w2: "Safety-oriented service approach", w3: "Regularly maintained quality equipment", w4: "Activities for all ages and experience levels", w5: "Fast booking and easy communication", w6: "Unforgettable memories, real satisfaction",
+                abTag: "Garazor Watersports • Ride the Waves. Feel the Freedom. Create Memories."
+            },
+            de: {
+                mainBook: "Jetzt Buchen", secTitle: "Unsere Aktivitäten", cardBook: "Buchen",
+                footerDesc: "Wir sind in der Region Eftalia Hotels mit unserem professionellen Personal und unserer Luxusausrüstung für Sie da.",
+                rights: "Alle Rechte vorbehalten.",
+                parasailing: "Genießen Sie den Himmel über Alanya. Ein wunderbares Flugerlebnis mit herrlichem Blick auf die Küste.",
+                mclaren: "Luxus-Sportwagen-Fahrerlebnis auf dem Meer. Der Einzige in Alanya mit auffälligem Stil und Geschwindigkeit!",
+                jetski: "Fahren Sie frei gegen die Wellen. Adrenalingeladene Momente mit starken Motoren.",
+                matrax: "Fordern Sie gemeinsam mit Ihrer Freundesgruppe die Wellen heraus, Lachgarantie.",
+                banana: "Versuchen Sie, auf dem Bananenboot das Gleichgewicht zu halten. Herunterfallen hat noch nie so viel Spaß gemacht.",
+                balerin: "Ein einzigartiges Abenteuer, das sich über die Meeresoberfläche dreht und Ihre Grenzen testet.",
+                flyfish: "Eine verrückte Aktivität, die sich mit dem Wind vom Wasser abhebt und Ihnen ein Fluggefühl vermittelt.",
+                frantic: "Verrückter Spaß voller hoher Geschwindigkeit und Adrenalin, der die Grenzen auf den Wellen verschiebt.",
+                ringo: "Erreichen Sie die Höhepunkte der Aufregung, während Sie schnell direkt über dem Wasser gezogen werden.",
+                rolls: "Erleben Sie das erstklassige Luxusgefühl auf dem Wasser. Eine komfortable und einzigartige Seekreuzfahrt.",
+                speedboat: "Entdecken Sie die versteckten Buchten von Alanya mit unserer Hochgeschwindigkeits-Luxus-Schnellboottour.",
+                waterski: "Genießen Sie beim Wasserski das Balancieren auf dem Wasser und das akrobatische Fahren.",
+                abSub: "Über Uns", abTitle: "Jeder tolle Urlaub verdient ein unvergessliches Abenteuer.",
+                abP1: "Als Garazor Watersports bieten wir unseren Gästen an der herrlichen Mittelmeerküste von Alanya nicht nur Wassersport, sondern Erinnerungen, die sie jahrelang schätzen werden.",
+                abP2: "Jeder Gast ist für uns etwas Besonderes. Vielleicht fahren Sie zum ersten Mal Jet-Ski oder machen Parasailing über dem Meer. Unabhängig von Ihrer Erfahrung begrüßt Sie unser professionelles Team sicher, informiert Sie in jeder Phase und sorgt dafür, dass Sie einen der aufregendsten Momente Ihres Urlaubs erleben.",
+                abP3: "Sicherheit ist unsere Priorität und die Zufriedenheit unserer Gäste unsere größte Motivation. Daher wird unsere gesamte Ausrüstung regelmäßig überprüft, in Übereinstimmung mit internationalen Sicherheitsstandards gewartet und alle unsere Aktivitäten werden von unserem erfahrenen Team geleitet.",
+                abP4: "Von Jet-Ski bis Parasailing, vom Bananenboot bis zu Fly Fish und Ringo vereint jede Aktivität Geschwindigkeit, Spaß und den faszinierenden Blick auf das Mittelmeer. Egal, ob Sie mit Ihrer Familie, Freunden oder alleine reisen, bei Garazor Watersports gibt es für jeden ein unvergessliches Erlebnis.",
+                abP5: "Im Laufe der Jahre haben wir Tausende von Gästen aus der ganzen Welt empfangen. Unser größter Stolz sind unsere Gäste, die uns jede Saison aufs Neue besuchen und uns ihren Freunden empfehlen.",
+                abQuote: "Denn wir bieten nicht nur Wassersport an. Wir schaffen die beste Erinnerung an den Urlaub der Menschen.",
+                abP6: "Wir laden Sie ein, die Freiheit im türkisfarbenen Wasser des Mittelmeers zu spüren, adrenalingeladene Momente zu erleben und Teil der Garazor Watersports-Familie zu werden.",
+                abWhyHead: "Warum Garazor Watersports?", w1: "Professionelles und freundliches Team", w2: "Sicherheitsorientierter Serviceansatz", w3: "Regelmäßig gewartete Qualitätsausrüstung", w4: "Aktivitäten für alle Altersgruppen und Erfahrungsstufen", w5: "Schnelle Buchung und einfache Kommunikation", w6: "Unvergessliche Erinnerungen, echte Zufriedenheit",
+                abTag: "Garazor Watersports • Reite die Wellen. Spüre die Freiheit. Schaffe Erinnerungen."
+            },
+            ru: {
+                mainBook: "Забронировать Сейчас", secTitle: "Наши Услуги", cardBook: "Заказать",
+                footerDesc: "Мы к вашим услугам в районе отелей Eftalia с нашим профессиональным персоналом и роскошным оборудованием.",
+                rights: "Все права защищены.",
+                parasailing: "Наслаждайтесь небом над Аланьей. Прекрасный полет с потрясающим видом на побережье.",
+                mclaren: "Опыт вождения роскошного спортивного автомобиля по морю. Единственный в Аланье со своим ярким стилем и скоростью!",
+                jetski: "Свободно мчитесь навстречу волнам. Наполненные адреналином моменты с мощными моторами.",
+                matrax: "Бросьте вызов волнам вместе с группой друзей, гарантированный смех.",
+                banana: "Постарайтесь удержать равновесие на банане, падать еще никогда не было так весело.",
+                balerin: "Уникальное приключение, вращающееся по поверхности моря и проверяющее пределы вашего баланса.",
+                flyfish: "Безумное развлечение, взлетающее над водой вместе с ветром, дарящее ощущение полета.",
+                frantic: "Безумное веселье, полное высокой скорости и адреналина, раздвигающее границы на волнах.",
+                ringo: "Достигайте пика азарта, пока вас быстро тянут прямо над водой.",
+                rolls: "Почувствуйте премиальную роскошь на воде. Комфортная и уникальная морская прогулка.",
+                speedboat: "Откройте для себя скрытые бухты Аланьи во время нашей скоростной экскурсии на роскошном катере.",
+                waterski: "Наслаждайтесь балансированием на воде и акробатическим катанием на водных лыжах.",
+                abSub: "О Нас", abTitle: "Каждый отличный отдых заслуживает незабываемого приключения.",
+                abP1: "В Garazor Watersports мы предлагаем нашим гостям не только водные виды спорта, но и воспоминания, которые они будут лелеять долгие годы на великолепном средиземноморском побережье Аланьи.",
+                abP2: "Для нас важен каждый гость. Возможно, вы впервые катаетесь на гидроцикле или занимаетесь парасейлингом над морем. Независимо от вашего опыта, наша профессиональная команда безопасно встретит вас, проинформирует на каждом этапе и гарантирует, что вы переживете один из самых захватывающих моментов вашего отпуска.",
+                abP3: "Безопасность — наш приоритет, а удовлетворенность гостей — наша главная мотивация. Поэтому все наше оборудование регулярно проверяется, обслуживается в соответствии с международными стандартами безопасности, а все наши мероприятия управляются опытной командой.",
+                abP4: "От гидроцикла до парасейлинга, от банана до Fly Fish и Ringo — каждое развлечение сочетает в себе скорость, веселье и завораживающий вид на Средиземное море. Путешествуете ли вы с семьей, друзьями или в одиночку, в Garazor Watersports каждый найдет для себя незабываемые впечатления.",
+                abP5: "За прошедшие годы мы приняли тысячи гостей со всего мира. Наша главная гордость – это наши гости, которые возвращаются к нам каждый сезон и рекомендуют нас своим друзьям.",
+                abQuote: "Потому что мы не просто предлагаем водные виды спорта. Мы создаем лучшие воспоминания об отдыхе людей.",
+                abP6: "Мы приглашаем вас почувствовать свободу в бирюзовых водах Средиземного моря, пережить моменты, полные адреналина, и стать частью семьи Garazor Watersports.",
+                abWhyHead: "Почему Гаразор Ватерспортс?", w1: "Профессиональная и дружная команда", w2: "Ориентированный на безопасность подход к обслуживанию", w3: "Регулярно обслуживаемое качественное оборудование", w4: "Занятия для всех возрастов и уровней подготовки", w5: "Быстрое бронирование и легкое общение", w6: "Незабываемые воспоминания, реальное удовлетворение",
+                abTag: "Garazor Watersports • Лови волну. Почувствуй свободу. Создавай воспоминания."
+            },
+            tr: {
+                mainBook: "Şimdi Rezervasyon Yap", secTitle: "Aktivitelerimiz", cardBook: "Rezervasyon Yap",
+                footerDesc: "Eftalia Hotels bölgesinde profesyonel kadromuz ve lüks ekipmanlarımızla hizmetinizdeyiz.",
+                rights: "Tüm Hakları Saklıdır.",
+                parasailing: "Alanya semalarında gökyüzünün tadını çıkarın. Muazzam sahil manzaralı uçuş keyfi.",
+                mclaren: "Deniz üzerinde lüks spor araba sürme deneyimi. Dikkat çekici tarzı ve hızıyla Alanya'da tek!",
+                jetski: "Dalgalara karşı özgürce hız yapın. Güçlü motorlarla adrenalin dolu dakikalar.",
+                matrax: "Arkadaş grubunuzla birlikte dalgaların üzerinde meydan okuyun, bol kahkaha garantili.",
+                banana: "Muz bot üzerinde dengede kalmaya çalışın, düşmek hiç bu kadar eğlenceli olmamıştı.",
+                balerin: "Deniz yüzeyinde dönerek ilerleyen, dengede kalma sınırlarınızı test edecek benzersiz bir macera.",
+                flyfish: "Rüzgarla birlikte suyun üzerinden havalanan, uçma hissi veren çılgın aktivite.",
+                frantic: "Dalgaların üzerinde sınırları zorlayan, yüksek sürat ve adrenalin dolu çılgın eğlence.",
+                ringo: "Suyun hemen üzerinde hızla çekilirken heyecanın doruklarına çıkın.",
+                rolls: "Premium lüks hissini suyun üzerinde yaşayın. Konforlu ve benzersiz bir deniz sürüşü.",
+                speedboat: "Alanya'nın gizli koylarını yüksek süratli lüks sürat teknemizle keşfedin.",
+                waterski: "Su kayağı ile deniz üstünde dengede durmanın ve akrobatik sürüşün tadını çıkarın.",
+                abSub: "Hakkımızda", abTitle: "Her Harika Tatil Unutulmaz Bir Macerayı Hak Eder.",
+                abP1: "Garazor Watersports olarak, Alanya’nın muhteşem Akdeniz kıyılarında misafirlerimize sadece su sporları değil, yıllarca hatırlayacakları anılar sunuyoruz.",
+                abP2: "Bizim için her misafir özeldir. İlk kez Jet Ski’ye biniyor ya da denizin üzerinde Parasailing yapıyor olabilirsiniz. Deneyiminiz ne olursa olsun, profesyonel ekibimiz sizi güvenle karşılar, her aşamada bilgilendirir bit tatilinizin en heyecan verici anlarından birini yaşamanızı sağlar.",
+                abP3: "Güvenlik bizim önceliğimiz, misafir memnuniyeti ise en büyük motivasyonumuzdur. Bu nedenle tüm ekipmanlerimiz düzenli olarak kontrol edilir, uluslararası güvenlik standartlarına uygun şekilde bakımları yapılır ve tüm aktivitelerimiz deneyimli ekibimiz tarafından yönetilir.",
+                abP4: "Jet Ski’den Parasailing’e, Banana Boat’tan Fly Fish ve Ringo’ya kadar her aktivite; hız, eğlence ve Akdeniz’in büyüleyici manzarasını bir araya getirir. İster ailenizle, ister arkadaşlarınızla, ister tek başınıza seyahat ediyor olun, Garazor Watersports’ta herkes için unutulmaz bir deneyim vardır.",
+                abP5: "Yıllar boyunca dünyanın dört bir yanından binlerce misafiri ağırladık. En büyük gururumuz ise, her sezon bizi tekrar ziyaret eden ve dostlarını bize tavsiye eden misafirlerimizdir.",
+                abQuote: "Çünkü biz sadece su sporları sunmuyoruz. İnsanların tatillerindeki en güzel anıyı oluşturuyoruz.",
+                abP6: "Sizi de Akdeniz’in turkuaz sularında özgürlüğü hissetmeye, adrenalin dolu anlar yaşamaya ve Garazor Watersports ailesinin bir parçası olmaya davet ediyoruz.",
+                abWhyHead: "Neden Garazor Watersports?", w1: "Profesyonel ve güler yüzlü ekip", w2: "Güvenlik odaklı hizmet anlayışı", w3: "Düzenli bakımı yapılan kaliteli ekipmanlar", w4: "Her yaş ve deneyim seviyesine uygun aktiviteler", w5: "Hızlı rezervasyon ve kolay iletişim", w6: "Unutulmaz anılar, gerçek misafir memnuniyeti",
+                abTag: "Garazor Watersports • Dalgaları Yaşa. Özgürlüğü Hisset. Anılarını Bizimle Biriktir."
+            },
+            pl: {
+                mainBook: "Zarezerwuj Teraz", secTitle: "Nasze Atrakcje", cardBook: "Zarezerwuj",
+                footerDesc: "Jesteśmy do Twoich usług w rejonie hoteli Eftalia z naszym profesjonalnym personelem i luksusowym sprzętem.",
+                rights: "Wszelkie prawa zastrzeżone.",
+                parasailing: "Ciesz się niebem nad Alanyą. Cudowne wrażenia z lotu z niesamowitym widokiem na wybrzeże.",
+                mclaren: "Doświadczenie jazdy luksusowym samochodem sportowym po morzu. Jedyny w Alanyi o przyciągającym wzrok stylu i prędkości!",
+                jetski: "Pędź swobodnie pod falę. Chwile pełne adrenaliny z mocnymi silnikami.",
+                matrax: "Rzuć wyzwanie falom razem z grupą znajomych, gwarancja świetnej zabawy.",
+                banana: "Spróbuj utrzymać równowagę na bananie, wpadnięcie do wody nigdy nie było tak zabawne.",
+                balerin: "Wyjątkowa przygoda, która kręci się po powierzchni morza i testuje granice Twojej równowagi.",
+                flyfish: "Szalona atrakcja, która unosi się nad wodą wraz z wiatrem, dając uczucie latania.",
+                frantic: "Szalona zabawa pełna dużej prędkości i adrenaliny, przesuwająca granice na falach.",
+                ringo: "Osiągnij szczyty emocji, będąc szybko ciągniętym tuż nad wodą.",
+                rolls: "Poczuj luksus premium na wodzie. Komfortowy i wyjątkowy rejs morski.",
+                speedboat: "Odkryj ukryte zatoki Alanyi podczas naszej szybkiej wycieczki luksusową łodzią motorową.",
+                waterski: "Ciesz się balansowaniem na wodzie i akrobatyczną jazdą na nartach wodnych.",
+                abSub: "O Nas", abTitle: "Każde wspaniałe wakacje zasługują na niezapomnianą przygodę.",
+                abP1: "Jako Garazor Watersports oferujemy naszym gościom na wspaniałym śródziemnomorskim wybrzeżu Alanyi nie tylko sporty wodne, ale także wspomnienia, które będą pielęgnować przez lata.",
+                abP2: "Każdy gość jest dla nas wyjątkowy. Możesz jechać na skuterze wodnym po raz pierwszy lub latać na spadochronie nad morzem. Bez względu na Twoje doświadczenie, nasz profesjonalny zespół powita Cię bezpiecznie, poinformuje na każdym etapie i zadba o to, abyś przeżył jeden z najbardziej ekscytujących momentów swoich wakacji.",
+                abP3: "Bezpieczeństwo jest naszym priorytetem, a satysfakcja gości naszą największą motywacją. Dlatego cały nasz sprzęt jest regularnie sprawdzany, konserwowany zgodnie z międzynarodowymi standardami bezpieczeństwa, a wszystkimi naszymi działaniami zarządza doświadczony zespół.",
+                abP4: "Od skuterów wodnych po parasailing, od banana po Fly Fish i Ringo – każda aktywność łączy w sobie prędkość, zabawę i fascynujący widok na Morze Śródziemne. Niezależnie od tego, czy podróżujesz z rodziną, przyjaciółmi czy sam, w Garazor Watersports każdy znajdzie niezapomniane wrażenia.",
+                abP5: "Przez lata gościliśmy tysiące gości z całego świata. Naszą największą dumą są goście, którzy odwiedzają nas ponownie w każdym sezonie i polecają nas swoim znajomym.",
+                abQuote: "Ponieważ nie oferujemy tylko sportów wodnych. Tworzymy najlepsze wspomnienia z wakacji ludzi.",
+                abP6: "Zapraszamy Cię do poczucia wolności w turkusowych wodach Morza Śródziemnego, przeżycia chwil pełnych adrenaliny i stania się częścią rodziny Garazor Watersports.",
+                abWhyHead: "Dlaczego Garazor Watersports?", w1: "Profesjonalny i przyjazny zespół", w2: "Podejście do usług zorientowane na bezpieczeństwo", w3: "Regularnie konserwowany sprzęt wysokiej jakości", w4: "Zajęcia dla wszystkich grup wiekowych i poziomów doświadczenia", w5: "Szybka rezerwacja i łatwa komunikacja", w6: "Niezapomniane wspomnienia, prawdziwa satysfakcja",
+                abTag: "Garazor Watersports • Ujeżdżaj fale. Poczuj wolność. Twórz wspomnienia."
+            },
+            cs: {
+                mainBook: "Rezervovat Nyní", secTitle: "Naše Aktivity", cardBook: "Rezervovat",
+                footerDesc: "Jsme vám k službám v oblasti hotelů Eftalia s naším profesionálním personálem a luxusním vybavením.",
+                rights: "Všechna práva vyhrazena.",
+                parasailing: "Užijte si nebe nad Alanyí. Nádherný zážitek z letu s úžasným výhledem na pobřeží.",
+                mclaren: "Zážitek z jízdy luxusním sportovním autem na moři. Jediný v Alanyi se svým poutavým stylem a rychlostí!",
+                jetski: "Rychle se ražte proti vlnám. Adrenalinové okamžiky s výkonnými motory.",
+                matrax: "Vyzvěte vlny společně se svou skupinou přátel, smích zaručen.",
+                banana: "Zkuste se udržet na banánovém člunu, padání z něj nikdy nebylo tak zábavné.",
+                balerin: "Jedinečné dobrodružství, které rotuje po mořské hladině a testuje limity vaší rovnováhy.",
+                flyfish: "Bláznivá aktivita, která se s větrem zvedá nad vodu a dodává vám pocit létání.",
+                frantic: "Bláznivá zábava plná vysoké rychlosti a adrenalinu, posouvající limity na vlnách.",
+                ringo: "Dosáhněte vrcholů vzrušení při rychlém tažení těsně nad vodou.",
+                rolls: "Zažijte prémiový pocit luxusu na vodě. Komfortní a jedinečná plavba po moři.",
+                speedboat: "Objevte skryté zátoky Alanye při naší rychlé plavbě luxusním motorovým člunem.",
+                waterski: "Užijte si rovnováhu na vodě a akrobatickou jízdu na vodních lyžích.",
+                abSub: "O Nás", abTitle: "Každá skvělá dovolená si zaslouží nezapomenutelné dobrodružství.",
+                abP1: "Jako Garazor Watersports nabízíme našim hostům na nádherném středomořském pobřeží Alanye nejen vodní sporty, ale také vzpomínky, které budou hřát po léta.",
+                abP2: "Každý host je pro nás výjimečný. Možná jedete na vodním skútru poprvé nebo letíte na padáku nad mořem. Bez ohledu na vaše zkušenosti vás náš profesionální tým bezpečně přivítá, informuje v každé fázi a zajistí, že zažijete jeden z nejzajímavějších momentů své dovolené.",
+                abP3: "Bezpečnost je naší prioritou a spokojenost hostů naší největší motivací. Proto je veškeré naše vybavení pravidelně kontrolováno, udržováno v souladu s mezinárodními bezpečnostními standardy a všechny naše aktivity jsou řízeny zkušeným týmem.",
+                abP4: "Od vodního skútru po parasailing, od banánu po Fly Fish a Ringo – každá aktivita spojuje rychlost, zábavu a fascinující výhled na Středozemní moře. Ať už cestujete s rodinou, přáteli nebo sami, v Garazor Watersports čeká na každého nezapomenutelný zážitek.",
+                abP5: "Za ta léta jsme přivítali tisíce hostů z celého světa. Naší největší pýchou jsou hosté, kteří nás navštěvují znovu každou sezónu a doporučují nás svým přátelům.",
+                abQuote: "Protože nenabízíme jen vodní sporty. Vytváříme tu nejlepší vzpomínku na dovolenou lidí.",
+                abP6: "Zveme vás, abyste ucítili svobodu v tyrkysových vodách Středozemního moře, zažili adrenalinové okamžiky a stali se součástí rodiny Garazor Watersports.",
+                abWhyHead: "Proč Garazor Watersports?", w1: "Profesionální a přátelský tým", w2: "Přístup k službám orientovaný na bezpečnost", w3: "Pravidelně udržované kvalitní vybavení", w4: "Aktivity pro všechny věkové kategorie a úrovně zkušeností", w5: "Rychlá rezervace a snadná komunikace", w6: "Nezapomenutelné vzpomínky, skutečná spokojenost",
+                abTag: "Garazor Watersports • Jezděte na vlnách. Potěšte se svobodou. Tvořte vzpomínky."
+            }
+        };
+
+        function changeLanguage(lang) {
+            const displayNames = { en: "ENG", de: "DE", ru: "RU", tr: "TR", pl: "PL", cs: "CS" };
+            document.getElementById('selected-lang-text').innerText = displayNames[lang];
+            document.getElementById("langMenu").classList.remove("show");
+
+            document.getElementById('main-book-btn').innerText = translations[lang].mainBook;
+            document.getElementById('section-title-text').innerText = translations[lang].secTitle;
+            
+            document.querySelectorAll('.card-btn-lang').forEach(btn => {
+                btn.innerText = translations[lang].cardBook;
+            });
+
+            document.getElementById('footer-desc').innerText = translations[lang].footerDesc;
+            document.getElementById('footer-rights').innerText = translations[lang].rights;
+
+            document.getElementById('desc-parasailing').innerText = translations[lang].parasailing;
+            document.getElementById('desc-mclaren').innerText = translations[lang].mclaren;
+            document.getElementById('desc-jetski').innerText = translations[lang].jetski;
+            document.getElementById('desc-matrax').innerText = translations[lang].matrax;
+            document.getElementById('desc-banana').innerText = translations[lang].banana;
+            document.getElementById('desc-balerin').innerText = translations[lang].balerin;
+            document.getElementById('desc-flyfish').innerText = translations[lang].flyfish;
+            document.getElementById('desc-frantic').innerText = translations[lang].frantic;
+            document.getElementById('desc-ringo').innerText = translations[lang].ringo;
+            document.getElementById('desc-rolls').innerText = translations[lang].rolls;
+            document.getElementById('desc-speedboat').innerText = translations[lang].speedboat;
+            document.getElementById('desc-waterski').innerText = translations[lang].waterski;
+
+            document.getElementById('about-sub').innerText = translations[lang].abSub;
+            document.getElementById('about-title-text').innerText = translations[lang].abTitle;
+            document.getElementById('about-p1').innerText = translations[lang].abP1;
+            document.getElementById('about-p2').innerText = translations[lang].abP2;
+            document.getElementById('about-p3').innerText = translations[lang].abP3;
+            document.getElementById('about-p4').innerText = translations[lang].abP4;
+            document.getElementById('about-p5').innerText = translations[lang].abP5;
+            document.getElementById('about-quote').innerText = translations[lang].abQuote;
+            document.getElementById('about-p6').innerText = translations[lang].abP6;
+            document.getElementById('about-why-head').innerText = translations[lang].abWhyHead;
+            document.getElementById('why-1').innerText = translations[lang].w1;
+            document.getElementById('why-2').innerText = translations[lang].w2;
+            document.getElementById('why-3').innerText = translations[lang].w3;
+            document.getElementById('why-4').innerText = translations[lang].w4;
+            document.getElementById('why-5').innerText = translations[lang].w5;
+            document.getElementById('why-6').innerText = translations[lang].w6;
+            document.getElementById('about-tag').innerText = translations[lang].abTag;
+        }
+    </script>
+</body>
+</html>

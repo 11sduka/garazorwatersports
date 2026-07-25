@@ -46,11 +46,17 @@
             align-items: center;
         }
         
-        .logo-img {
-            height: 220px;
-            width: auto;
-            object-fit: contain;
-            filter: drop-shadow(0px 4px 12px rgba(0,0,0,0.6));
+        /* Yeni Metin Logo Tasarımı */
+        .brand-text {
+            color: #ffffff;
+            font-size: 1.8rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.6);
+        }
+        .brand-text span {
+            color: #00f2fe;
         }
         
         /* --- DİL MENÜSÜ --- */
@@ -426,7 +432,7 @@
             .hero { height: 100vh; } 
             
             header { padding: 10px 3%; }
-            .logo-img { height: 140px; } 
+            .brand-text { font-size: 1.2rem; } 
             .booking-bar { padding: 35px 15px 15px 15px; }
             .btn-glow { padding: 14px 30px; font-size: 0.9rem; width: 100%; }
             .activities-section { padding: 20px 3% 40px 3%; }
@@ -454,7 +460,8 @@
 
     <header>
         <div class="brand-container">
-            <img src="logo_2.png" alt="Garazor Watersports" class="logo-img">
+            <!-- Dosya resmi problemi giderildi, metin logo kullanıldı -->
+            <div class="brand-text">Garazor <span>Watersports</span></div>
         </div>
         
         <div class="lang-dropdown">
@@ -659,8 +666,8 @@
                 <p><i class="fa-solid fa-location-dot"></i> Türkler, Eftalia Sahili, Alanya/Antalya</p>
                 
                 <!-- 2 NUMARA BURAYA EKLENDİ -->
-                <p><i class="fa-solid fa-phone"></i> [ESKİ NUMARANIZ]</p>
-                <p><i class="fa-solid fa-phone"></i> +90 530 500 00 95</p>
+                <p><i class="fa-solid fa-phone"></i> 1: +90 530 500 00 95</p>
+                <p><i class="fa-solid fa-phone"></i> 2: +90 536 681 68 99</p>
                 
                 <p><i class="fa-solid fa-envelope"></i> support@garazorwatersports.com</p>
             </div>

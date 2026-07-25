@@ -423,7 +423,6 @@
         /* --- MOBIL UYUMLULUK --- */
         @media screen and (max-width: 768px) {
             
-            /* --- YENİ EKLENEN SATIR --- */
             .hero { height: 100vh; } 
             
             header { padding: 10px 3%; }
@@ -474,7 +473,6 @@
     </header>
 
     <section class="hero">
-        <!-- HIZ OPTİMİZASYONU: preload="none" yapıldı ve poster eklendi -->
         <video autoplay muted loop playsinline preload="none" poster="hero-bg.jpg" id="bg-video">
             <source src="video.mp4" type="video/mp4">
         </video>
@@ -485,7 +483,6 @@
     </section>
 
     <div class="booking-bar">
-        <!-- Numara güncellendi -->
         <a href="https://wa.me/905305000095" target="_blank" class="btn-glow" id="main-book-btn">Book Now</a>
     </div>
 
@@ -660,8 +657,11 @@
                 <h2>Garazor Watersports</h2>
                 <p id="footer-desc">We are at your service in the Eftalia Hotels region with our professional staff and luxury equipment.</p>
                 <p><i class="fa-solid fa-location-dot"></i> Türkler, Eftalia Sahili, Alanya/Antalya</p>
-                <!-- Numara ve Mail güncellendi -->
+                
+                <!-- 2 NUMARA BURAYA EKLENDİ -->
+                <p><i class="fa-solid fa-phone"></i> [ESKİ NUMARANIZ]</p>
                 <p><i class="fa-solid fa-phone"></i> +90 530 500 00 95</p>
+                
                 <p><i class="fa-solid fa-envelope"></i> support@garazorwatersports.com</p>
             </div>
             <div class="map-box">
@@ -702,7 +702,6 @@
             }
         }
 
-        /* YARIM KALAN DİL OBJESİ TAMAMLANDI */
         const translations = {
             en: {
                 mainBook: "Book Now", secTitle: "Our Activities", cardBook: "Book Now", footerDesc: "We are at your service in the Eftalia Hotels region with our professional staff and luxury equipment.", rights: "All Rights Reserved."
@@ -727,20 +726,16 @@
         function changeLanguage(lang) {
             const t = translations[lang] || translations['en'];
             
-            // Üst Menü Yazısı
             document.getElementById('selected-lang-text').innerText = lang.toUpperCase();
             
-            // Temel Alanlar
             if(document.getElementById('main-book-btn')) document.getElementById('main-book-btn').innerText = t.mainBook;
             if(document.getElementById('section-title-text')) document.getElementById('section-title-text').innerText = t.secTitle;
             if(document.getElementById('footer-desc')) document.getElementById('footer-desc').innerText = t.footerDesc;
             if(document.getElementById('footer-rights')) document.getElementById('footer-rights').innerText = t.rights;
             
-            // Kart Butonları
             const cardBtns = document.querySelectorAll('.card-btn-lang');
             cardBtns.forEach(btn => btn.innerText = t.cardBook);
 
-            // Menüyü Kapat
             document.getElementById("langMenu").classList.remove("show");
         }
     </script>
